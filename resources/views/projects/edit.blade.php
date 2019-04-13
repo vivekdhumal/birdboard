@@ -1,7 +1,7 @@
 @extends ('layouts.app')
 
 @section('content')
-    <form method="POST" action="{{ $project->path() }}" class="lg:w-1/2 lg:mx-auto bg-white py-12 px-16 rounded shadow">
+    <form method="POST" action="{{ $project->path() }}" class="lg:w-1/2 lg:mx-auto bg-card py-12 px-16 rounded shadow">
 
         @method('PATCH')
 
