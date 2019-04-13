@@ -35,7 +35,7 @@ class ProjectFactory
         ]);
 
         factory(Task::class, $this->taskCount)->create([
-            'project_id' => $project->id
+            'project_id' => $project
         ]);
 
         return $project;

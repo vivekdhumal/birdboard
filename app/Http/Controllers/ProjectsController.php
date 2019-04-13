@@ -9,7 +9,7 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        $projects = auth()->user()->projects;
+        $projects = auth()->user()->accessibleProjects();
 
         return view('projects.index', compact('projects'));
     }
@@ -30,6 +30,10 @@ class ProjectsController extends Controller
     {
         $project = auth()->user()->projects()->create($this->validateRequest());
 
+        if(request()->wantsJson()) {
+            return ['message' => $project->path()];
+        }
+
         return redirect($project->path());
     }
 
@@ -49,7 +53,7 @@ class ProjectsController extends Controller
 
     public function destroy(Project $project)
     {
-        $this->authorize('update', $project);
+        $this->authorize('manage', $project);
 
         $project->delete();
 

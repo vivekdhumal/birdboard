@@ -19,50 +19,47 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-grey-light">
+<body class="theme-light bg-page">
     <div id="app">
-        <nav class="bg-white">
+        <nav class="bg-header">
             <div class="container mx-auto">
                 <div class="flex justify-between items-center py-2">
                     <h3>
                         <a href="{{ url('/') }}">
-                            <img src="/images/logo.svg" alt="{{ config('app.name', 'Laravel') }}">
+                            {{-- <img src="/images/logo.svg" alt="{{ config('app.name', 'Laravel') }}"> --}}
+                            @include('svglogo')
                         </a>
                     </h3>
 
                     <div>
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
+                        <div class="ml-auto flex items-center">
                             <!-- Authentication Links -->
                             @guest
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
+                                <a class="text-default no-underline mr-3" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
+                                    <a class="text-default no-underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
                             @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                <theme-switcher></theme-switcher>
+
+                                <div class="flex items-center nav-link text-default dropdown-toggle flex items-center mr-3" v-pre>
+                                    <img src="{{ gravatar_url(Auth::user()->email) }}" alt="{{ Auth::user()->name }}'s avatar" class="rounded-full mr-3" width="35"> {{ Auth::user()->name }} <span class="caret"></span>
+                                </div>
+
+                                <div>
+                                    <a class="no-underline text-accent" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
                                     </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
                             @endguest
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
