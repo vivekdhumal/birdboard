@@ -44,10 +44,10 @@
                             class="border bg-card border-muted-light mb-2 p-2 text-default text-xs block w-full rounded"
                             placeholder="Task 1"
                             v-for="task in form.tasks"
-                            v-model="task.value">
+                            v-model="task.body">
                     </div>
 
-                    <button class="inline-flex items-center text-xs" @click="addTask">
+                    <button type="button" class="inline-flex items-center text-xs" @click="addTask">
                         <span class="mr-2">&plus;</span>
                         <span>Add New Task Field</span>
                     </button>
@@ -70,7 +70,7 @@
                     title: '',
                     description: '',
                     tasks: [
-                        { value : ''},
+                        { body : ''},
                     ]
                 },
 
