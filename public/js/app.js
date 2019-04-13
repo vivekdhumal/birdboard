@@ -1825,6 +1825,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -36804,11 +36806,16 @@ var render = function() {
                       expression: "form.title"
                     }
                   ],
-                  staticClass: "border p-2 text-xs block w-full rounded",
+                  staticClass:
+                    "border bg-card p-2 text-default text-xs block w-full rounded",
                   class: _vm.errors.title
                     ? "border-error"
                     : "border-muted-light",
-                  attrs: { type: "text", id: "title" },
+                  attrs: {
+                    type: "text",
+                    id: "title",
+                    placeholder: "My Next Awsome Project"
+                  },
                   domProps: { value: _vm.form.title },
                   on: {
                     input: function($event) {
@@ -36847,11 +36854,16 @@ var render = function() {
                       expression: "form.description"
                     }
                   ],
-                  staticClass: "border p-2 text-xs block w-full rounded",
+                  staticClass:
+                    "border bg-card p-2 text-default text-xs block w-full rounded",
                   class: _vm.errors.description
                     ? "border-error"
                     : "border-muted-light",
-                  attrs: { id: "description", rows: "7" },
+                  attrs: {
+                    id: "description",
+                    rows: "7",
+                    placeholder: "I Should Start Learning Piano"
+                  },
                   domProps: { value: _vm.form.description },
                   on: {
                     input: function($event) {
@@ -36894,7 +36906,7 @@ var render = function() {
                         }
                       ],
                       staticClass:
-                        "border border-muted-light mb-2 p-2 text-xs block w-full rounded",
+                        "border bg-card border-muted-light mb-2 p-2 text-default text-xs block w-full rounded",
                       attrs: {
                         type: "text",
                         id: "title",

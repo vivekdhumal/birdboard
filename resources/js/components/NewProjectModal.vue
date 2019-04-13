@@ -10,8 +10,9 @@
                         <input
                             type="text"
                             id="title"
-                            class="border p-2 text-xs block w-full rounded"
+                            class="border bg-card p-2 text-default text-xs block w-full rounded"
                             :class="errors.title ? 'border-error': 'border-muted-light'"
+                            placeholder="My Next Awsome Project"
                             v-model="form.title">
 
                         <span class="text-xs italic text-error" v-if="errors.title" v-text="errors.title[0]"></span>
@@ -22,9 +23,10 @@
 
                         <textarea
                             id="description"
-                            class="border p-2 text-xs block w-full rounded"
+                            class="border bg-card p-2 text-default text-xs block w-full rounded"
                             :class="errors.description ? 'border-error': 'border-muted-light'"
                             rows="7"
+                            placeholder="I Should Start Learning Piano"
                             v-model="form.description"></textarea>
 
                         <span class="text-xs italic text-error" v-if="errors.description" v-text="errors.description[0]"></span>
@@ -39,7 +41,7 @@
                         <input
                             type="text"
                             id="title"
-                            class="border border-muted-light mb-2 p-2 text-xs block w-full rounded"
+                            class="border bg-card border-muted-light mb-2 p-2 text-default text-xs block w-full rounded"
                             placeholder="Task 1"
                             v-for="task in form.tasks"
                             v-model="task.value">
