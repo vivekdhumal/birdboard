@@ -43,11 +43,30 @@
                             @else
                                 <theme-switcher></theme-switcher>
 
-                                <div class="flex items-center nav-link text-default dropdown-toggle flex items-center mr-3" v-pre>
-                                    <img src="{{ gravatar_url(Auth::user()->email) }}" alt="{{ Auth::user()->name }}'s avatar" class="rounded-full mr-3" width="35"> {{ Auth::user()->name }} <span class="caret"></span>
-                                </div>
+                                <dropdown align="right" width="200px">
+                                    <template slot="trigger">
+                                        <button
+                                            class="flex items-center nav-link text-default dropdown-toggle flex items-center mr-3 focus:outline-none"
+                                        >
+                                            <img src="{{ gravatar_url(auth()->user()->email) }}"
+                                                class="rounded-full mr-3"
+                                                width="35">
 
-                                <div>
+                                            {{ auth()->user()->name }}
+                                        </button>
+                                    </template>
+
+                                    <a href="{{ route('logout') }}"
+                                        class="dropdown-menu-link"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </dropdown>
+
+                                {{-- <div>
                                     <a class="no-underline text-accent" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -57,7 +76,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
+                                </div> --}}
                             @endguest
                         </div>
                     </div>
